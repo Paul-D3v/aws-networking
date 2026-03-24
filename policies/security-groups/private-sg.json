@@ -1,7 +1,7 @@
 {
   "GroupName": "aws-networking-lab-private-sg",
   "Description": "Security group for private subnet instances — traffic allowed only from the public security group",
-  "VpcId": "<YOUR_VPC_ID>",
+  "VpcId": "vpc-01e3b3df7040566de",
 
   "SecurityGroupIngress": [
     {
@@ -10,7 +10,7 @@
       "ToPort": 22,
       "UserIdGroupPairs": [
         {
-          "GroupId": "<PUBLIC_SG_ID>",
+          "GroupId": "sg-0554d0414254dde00",
           "Description": "SSH from bastion host in public subnet only"
         }
       ]
