@@ -276,7 +276,7 @@ Security Groups handle this automatically (they are stateful). NACLs do not.
 
 ```bash
 # Clone the repo
-git clone https://github.com/<YOUR_USERNAME>/aws-networking.git
+git clone https://github.com/Paul-D3v/aws-networking.git
 cd aws-networking
 
 # Make scripts executable
@@ -316,7 +316,8 @@ Screenshots of the deployed resources are located in the `screenshots/` folder:
 |------|-------------|
 | `screenshots/vpc-overview.png` | VPC dashboard showing all resources |
 | `screenshots/subnets.png` | Four subnets across two AZs |
-| `screenshots/route-tables.png` | Public (IGW) and private (NAT GW) routes |
+| `screenshots/route-tables(private).png` | private (NAT GW) routes |
+| `screenshots/route-tables(public).png` | Public (IGW) |
 | `screenshots/nat-gateway.png` | NAT Gateway in Available state with EIP |
 | `screenshots/security-groups.png` | Public and private security group rules |
 | `screenshots/nacl-public.png` | Public NACL inbound/outbound rules |
