@@ -322,4 +322,3 @@ Screenshots of the deployed resources are located in the `screenshots/` folder:
 | `screenshots/security-groups.png` | Public and private security group rules |
 | `screenshots/nacl-public.png` | Public NACL inbound/outbound rules |
 | `screenshots/nacl-private.png` | Private NACL inbound/outbound rules |
-| `screenshots/nat-test-output.png` | Terminal output confirming NAT GW works |
