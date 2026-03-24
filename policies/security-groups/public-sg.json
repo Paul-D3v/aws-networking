@@ -1,7 +1,7 @@
 {
   "GroupName": "aws-networking-lab-public-sg",
   "Description": "Security group for public subnet instances — allows HTTP, HTTPS, and SSH inbound",
-  "VpcId": "<YOUR_VPC_ID>",
+  "VpcId": "vpc-01e3b3df7040566de",
 
   "SecurityGroupIngress": [
     {
