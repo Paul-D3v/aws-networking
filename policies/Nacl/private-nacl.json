@@ -1,6 +1,6 @@
 {
   "NetworkAclName": "aws-networking-lab-private-nacl",
-  "VpcId": "<YOUR_VPC_ID>",
+  "VpcId": "vpc-01e3b3df7040566de",
   "Description": "NACL for private subnets — restricts inbound to VPC CIDR only; allows outbound for NAT Gateway return traffic",
 
   "InboundRules": [
@@ -47,8 +47,8 @@
   ],
 
   "AssociatedSubnets": [
-    "<PRIVATE_SUBNET_AZ1_ID>",
-    "<PRIVATE_SUBNET_AZ2_ID>"
+    "subnet-0fd2af6d0eb2ba35a",
+    "subnet-09498632a7893b811"
   ],
 
   "Tags": [
