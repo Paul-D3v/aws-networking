@@ -1,6 +1,6 @@
 {
   "NetworkAclName": "aws-networking-lab-public-nacl",
-  "VpcId": "<YOUR_VPC_ID>",
+  "VpcId": "vpc-01e3b3df7040566de",
   "Description": "NACL for public subnets — stateless firewall controlling subnet-level traffic",
 
   "InboundRules": [
@@ -68,8 +68,8 @@
   ],
 
   "AssociatedSubnets": [
-    "<PUBLIC_SUBNET_AZ1_ID>",
-    "<PUBLIC_SUBNET_AZ2_ID>"
+    "subnet-0d5co673fae410160",
+    "subnet-0554d0414254dde00"
   ],
 
   "Tags": [
