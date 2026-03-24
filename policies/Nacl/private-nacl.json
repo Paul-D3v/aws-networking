@@ -1,0 +1,59 @@
+{
+  "NetworkAclName": "aws-networking-lab-private-nacl",
+  "VpcId": "<YOUR_VPC_ID>",
+  "Description": "NACL for private subnets — restricts inbound to VPC CIDR only; allows outbound for NAT Gateway return traffic",
+
+  "InboundRules": [
+    {
+      "RuleNumber": 100,
+      "Protocol": "-1",
+      "ProtocolName": "ALL",
+      "RuleAction": "allow",
+      "Egress": false,
+      "CidrBlock": "10.0.0.0/16",
+      "Description": "Allow all traffic originating from within the VPC"
+    },
+    {
+      "RuleNumber": 110,
+      "Protocol": "6",
+      "ProtocolName": "TCP",
+      "RuleAction": "allow",
+      "Egress": false,
+      "CidrBlock": "0.0.0.0/0",
+      "PortRange": { "From": 1024, "To": 65535 },
+      "Description": "Allow ephemeral return traffic from NAT Gateway responses (stateless)"
+    },
+    {
+      "RuleNumber": 32767,
+      "Protocol": "-1",
+      "ProtocolName": "ALL",
+      "RuleAction": "deny",
+      "Egress": false,
+      "CidrBlock": "0.0.0.0/0",
+      "Description": "Deny all other inbound traffic from the internet"
+    }
+  ],
+
+  "OutboundRules": [
+    {
+      "RuleNumber": 100,
+      "Protocol": "-1",
+      "ProtocolName": "ALL",
+      "RuleAction": "allow",
+      "Egress": true,
+      "CidrBlock": "0.0.0.0/0",
+      "Description": "Allow all outbound traffic — routed through NAT Gateway for internet access"
+    }
+  ],
+
+  "AssociatedSubnets": [
+    "<PRIVATE_SUBNET_AZ1_ID>",
+    "<PRIVATE_SUBNET_AZ2_ID>"
+  ],
+
+  "Tags": [
+    { "Key": "Name",        "Value": "aws-networking-lab-private-nacl" },
+    { "Key": "Environment", "Value": "lab" },
+    { "Key": "Layer",       "Value": "private" }
+  ]
+}

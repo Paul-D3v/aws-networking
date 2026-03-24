@@ -1,0 +1,71 @@
+{
+  "GroupName": "aws-networking-lab-public-sg",
+  "Description": "Security group for public subnet instances — allows HTTP, HTTPS, and SSH inbound",
+  "VpcId": "<YOUR_VPC_ID>",
+
+  "SecurityGroupIngress": [
+    {
+      "IpProtocol": "tcp",
+      "FromPort": 80,
+      "ToPort": 80,
+      "IpRanges": [
+        {
+          "CidrIp": "0.0.0.0/0",
+          "Description": "Allow HTTP from anywhere"
+        }
+      ],
+      "Ipv6Ranges": [
+        {
+          "CidrIpv6": "::/0",
+          "Description": "Allow HTTP from anywhere (IPv6)"
+        }
+      ]
+    },
+    {
+      "IpProtocol": "tcp",
+      "FromPort": 443,
+      "ToPort": 443,
+      "IpRanges": [
+        {
+          "CidrIp": "0.0.0.0/0",
+          "Description": "Allow HTTPS from anywhere"
+        }
+      ],
+      "Ipv6Ranges": [
+        {
+          "CidrIpv6": "::/0",
+          "Description": "Allow HTTPS from anywhere (IPv6)"
+        }
+      ]
+    },
+    {
+      "IpProtocol": "tcp",
+      "FromPort": 22,
+      "ToPort": 22,
+      "IpRanges": [
+        {
+          "CidrIp": "0.0.0.0/0",
+          "Description": "SSH — restrict to your IP in production, e.g. 203.0.113.5/32"
+        }
+      ]
+    }
+  ],
+
+  "SecurityGroupEgress": [
+    {
+      "IpProtocol": "-1",
+      "IpRanges": [
+        {
+          "CidrIp": "0.0.0.0/0",
+          "Description": "Allow all outbound traffic"
+        }
+      ]
+    }
+  ],
+
+  "Tags": [
+    { "Key": "Name",        "Value": "aws-networking-lab-public-sg" },
+    { "Key": "Environment", "Value": "lab" },
+    { "Key": "Layer",       "Value": "public" }
+  ]
+}

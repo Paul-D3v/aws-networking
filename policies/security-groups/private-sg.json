@@ -1,0 +1,59 @@
+{
+  "GroupName": "aws-networking-lab-private-sg",
+  "Description": "Security group for private subnet instances — traffic allowed only from the public security group",
+  "VpcId": "<YOUR_VPC_ID>",
+
+  "SecurityGroupIngress": [
+    {
+      "IpProtocol": "tcp",
+      "FromPort": 22,
+      "ToPort": 22,
+      "UserIdGroupPairs": [
+        {
+          "GroupId": "<PUBLIC_SG_ID>",
+          "Description": "SSH from bastion host in public subnet only"
+        }
+      ]
+    },
+    {
+      "IpProtocol": "tcp",
+      "FromPort": 8080,
+      "ToPort": 8080,
+      "UserIdGroupPairs": [
+        {
+          "GroupId": "<PUBLIC_SG_ID>",
+          "Description": "Application port from public subnet"
+        }
+      ]
+    },
+    {
+      "IpProtocol": "icmp",
+      "FromPort": -1,
+      "ToPort": -1,
+      "UserIdGroupPairs": [
+        {
+          "GroupId": "<PUBLIC_SG_ID>",
+          "Description": "ICMP (ping) from public subnet for connectivity testing"
+        }
+      ]
+    }
+  ],
+
+  "SecurityGroupEgress": [
+    {
+      "IpProtocol": "-1",
+      "IpRanges": [
+        {
+          "CidrIp": "0.0.0.0/0",
+          "Description": "Allow all outbound — routes through NAT Gateway"
+        }
+      ]
+    }
+  ],
+
+  "Tags": [
+    { "Key": "Name",        "Value": "aws-networking-lab-private-sg" },
+    { "Key": "Environment", "Value": "lab" },
+    { "Key": "Layer",       "Value": "private" }
+  ]
+}

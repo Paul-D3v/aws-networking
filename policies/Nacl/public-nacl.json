@@ -1,0 +1,80 @@
+{
+  "NetworkAclName": "aws-networking-lab-public-nacl",
+  "VpcId": "<YOUR_VPC_ID>",
+  "Description": "NACL for public subnets — stateless firewall controlling subnet-level traffic",
+
+  "InboundRules": [
+    {
+      "RuleNumber": 100,
+      "Protocol": "6",
+      "ProtocolName": "TCP",
+      "RuleAction": "allow",
+      "Egress": false,
+      "CidrBlock": "0.0.0.0/0",
+      "PortRange": { "From": 80, "To": 80 },
+      "Description": "Allow HTTP inbound from anywhere"
+    },
+    {
+      "RuleNumber": 110,
+      "Protocol": "6",
+      "ProtocolName": "TCP",
+      "RuleAction": "allow",
+      "Egress": false,
+      "CidrBlock": "0.0.0.0/0",
+      "PortRange": { "From": 443, "To": 443 },
+      "Description": "Allow HTTPS inbound from anywhere"
+    },
+    {
+      "RuleNumber": 120,
+      "Protocol": "6",
+      "ProtocolName": "TCP",
+      "RuleAction": "allow",
+      "Egress": false,
+      "CidrBlock": "0.0.0.0/0",
+      "PortRange": { "From": 22, "To": 22 },
+      "Description": "Allow SSH inbound (restrict to known IPs in production)"
+    },
+    {
+      "RuleNumber": 130,
+      "Protocol": "6",
+      "ProtocolName": "TCP",
+      "RuleAction": "allow",
+      "Egress": false,
+      "CidrBlock": "0.0.0.0/0",
+      "PortRange": { "From": 1024, "To": 65535 },
+      "Description": "Allow ephemeral (return) traffic — required because NACLs are stateless"
+    },
+    {
+      "RuleNumber": 32767,
+      "Protocol": "-1",
+      "ProtocolName": "ALL",
+      "RuleAction": "deny",
+      "Egress": false,
+      "CidrBlock": "0.0.0.0/0",
+      "Description": "Implicit deny all — blocks everything not matched above"
+    }
+  ],
+
+  "OutboundRules": [
+    {
+      "RuleNumber": 100,
+      "Protocol": "-1",
+      "ProtocolName": "ALL",
+      "RuleAction": "allow",
+      "Egress": true,
+      "CidrBlock": "0.0.0.0/0",
+      "Description": "Allow all outbound traffic"
+    }
+  ],
+
+  "AssociatedSubnets": [
+    "<PUBLIC_SUBNET_AZ1_ID>",
+    "<PUBLIC_SUBNET_AZ2_ID>"
+  ],
+
+  "Tags": [
+    { "Key": "Name",        "Value": "aws-networking-lab-public-nacl" },
+    { "Key": "Environment", "Value": "lab" },
+    { "Key": "Layer",       "Value": "public" }
+  ]
+}
